@@ -1,0 +1,110 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "openfilm",
+    "nameCn": "OpenFilm",
+    "repoName": "openfilm-deploy-guide",
+    "oneLiner": "把片子写成网页：每个镜头是一个 frame 函数，agent 负责生成，Studio 里手动调整并渲染成片",
+    "officialRepo": "https://github.com/openfilm/openfilm",
+    "officialDocs": "https://github.com/openfilm/openfilm#readme",
+    "stars": "4.0k",
+    "license": "MIT",
+    "highlights": [
+      "网页即素材：CSS、Canvas、WebGL、SVG 都能用",
+      "一个函数成片：frame(t) 描述任意时间点",
+      "真编辑器：时间线移动、裁剪、改样式",
+      "交给 agent：一句话生成初版再手改",
+      "无人值守：命令行即可渲染",
+      "MIT 协议，个人与商用都可"
+    ],
+    "mcpSupport": "项目本身不含 MCP，走 skills 与命令行与 agent 协作；本仓库的 MCP 只提供部署步骤、依赖与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-11-01",
+    "verification": [
+      [
+        "README 确认 Node 22.2+、ffmpeg、git 与首次下载 Chromium",
+        "已核对 2026-11-01"
+      ],
+      [
+        "README 确认 skills 安装命令与桌面端安装包两种入口",
+        "已核对 2026-11-01"
+      ],
+      [
+        "未实测安装与渲染",
+        "说明 2026-11-01"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-11-01"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-11-01"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "requires": [
+        "node"
+      ],
+      "steps": [
+        "npx -y skills add openfilm/openfilm",
+        "npx -y openfilm@latest --help",
+        "echo \"安装完成：让 agent 生成一条 20 秒短片，再在 Studio 里手改\""
+      ],
+      "stepsPs": [
+        "npx -y skills add openfilm/openfilm",
+        "npx -y openfilm@latest --help",
+        "Write-Host \"安装完成：让 agent 生成一条 20 秒短片，再在 Studio 里手改\""
+      ],
+      "source": "https://github.com/openfilm/openfilm#install"
+    },
+    "pitfalls": [
+      "渲染失败：先确认 ffmpeg 在 PATH 里",
+      "Studio 打不开：确认 Node 版本 22.2 以上",
+      "首次运行很慢：正在下载无头浏览器，等它完成",
+      "生成的画面空白：检查 frame(t) 是否有绘制逻辑",
+      "中文乱码：给页面指定字体与 lang",
+      "导出体积过大：降低分辨率或码率再渲染",
+      "Windows 上路径报错：把工程放在不含空格的目录"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/openfilm-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/openfilm-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "OpenFilm",
+    "OpenFilm 部署",
+    "AI 生成 视频",
+    "网页 做 视频",
+    "agent 剪辑 视频",
+    "openfilm 教程",
+    "本地 视频 渲染",
+    "Remotion 替代",
+    "openfilm deploy guide",
+    "代码 生成 短片"
+  ],
+  "topics": [
+    "video",
+    "ai-agents",
+    "video-editing",
+    "nodejs",
+    "creative-tools",
+    "openfilm"
+  ]
+}
